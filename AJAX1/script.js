@@ -1,23 +1,20 @@
-//bind de HTML id's
 let firstName = document.getElementById("firstName");
+let lastName = document.getElementById("lastName");
 let age = document.getElementById("age");
+let email = document.getElementById("email");
 let submitButton = document.getElementById("submitButton");
 let responseHere = document.getElementById("responseHere");
-//click event listener
-submitButton.addEventListener("click", ajax);
-//ajax functie
-function ajax(){
+submitButton.addEventListener('click', ajax);
+function ajax() {
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             responseHere.innerHTML = this.responseText;
         }
     };
-    let httpString = "form_1.php?firstName=" + firstName.value + "form_1.php?lastName=" + lastName.value + "form_1.php?age=" + age.value + "form_1.php?email=" + email.value;
-    //debuggen laat de http string zien
+    let httpString = "form_1.php?firstName=" + firstName.value + "&age=" + age.value + "&lastName=" + lastName.value + "&email=" + email.value;
     console.log(httpString);
-    //bereid de ajax actie voor
     xmlhttp.open("GET", httpString, true);
-    xmlhttp.send(); // doe het
+    xmlhttp.send();
 }
 
